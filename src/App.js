@@ -9,23 +9,16 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import {QueueEvents} from "./constants/QueueEvents";
 import {WebSocketRoot} from "./constants/WsConstants";
+import TransactionTable from "./components/TransactionTable";
 
 const SOCKET_URL = `http://localhost:9000/${WebSocketRoot}/`;
 
 const App = () => {
-    let onConnected = () => {
-        console.log("Connected!!")
-    };
+    const [value, setValue] = useState(QueueEvents.PUT_TRANSACTION);
 
     let onMessageReceived = (msg, name) => {
         console.log(name, msg);
     };
-
-    let onSendMessage = (msgText) => {
-        console.log(msgText);
-    };
-
-    const [value, setValue] = useState(QueueEvents.PUT_TRANSACTION);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -34,29 +27,23 @@ const App = () => {
     return (
         <div className="App">
             {Object.values(QueueEvents).map(name => <SockJsClient
-                url={SOCKET_URL}
-                topics={[`/${WebSocketRoot}/${name}`]}
-                onConnect={onConnected}
-                onDisconnect={console.log("Disconnected!")}
+                url={SOCKET_URL} topics={[`/${WebSocketRoot}/${name}`]}
                 onMessage={msg => onMessageReceived(msg, name)}
-                debug={false}
             />)}
 
             <Container maxWidth="lg" component={'div'}>
                 <Paper square>
                     <Tabs
-                        value={value}
-                        indicatorColor="primary"
-                        textColor="primary"
+                        component={'div'} value={value} variant="fullWidth"
+                        indicatorColor="primary" textColor="primary"
                         onChange={handleChange}
-                        aria-label="disabled tabs example"
-                        component={'div'}
-                        variant="fullWidth"
                     >
                         <Tab label="Transactions" href={''} value={QueueEvents.PUT_TRANSACTION}/>
                         <Tab label="Dormant activations" href={''} value={QueueEvents.ACTIVATE_DORMANT}/>
                     </Tabs>
                 </Paper>
+
+                <TransactionTable/>
 
                 <Button variant="contained" color="primary" href={''}>
                     Hello World
