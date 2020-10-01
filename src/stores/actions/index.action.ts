@@ -1,2 +1,2 @@
-export {default as TransactionActions} from './transaction.action.ts';
+export {default as TransactionActionsTypes} from './transaction.action-types';
 
