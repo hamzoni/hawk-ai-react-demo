@@ -2,15 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="42f8cccb-eb84-4fc9-988f-d2934a5123e5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/dto/account.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dto/dormant-account.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dto/transaction.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/apis/api.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/apis/transaction.api.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/stores/actions/transaction.action.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/stores/reducers/index.reducer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/stores/reducers/transaction.reducer.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stores/actions/index.action.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stores/states/index.state.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stores/states/transaction.state.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/stores/actions/transaction.action.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/stores/actions/transaction.action.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/stores/reducers/index.reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/stores/reducers/index.reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/stores/reducers/transaction.reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/stores/reducers/transaction.reducer.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -23,32 +24,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/dto/transaction.dto.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="7" column="21" lean-forward="true" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/dto/dormant-account.dto.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="3" column="49" lean-forward="true" selection-start-line="3" selection-start-column="49" selection-end-line="3" selection-end-column="49" />
-              <folding>
-                <element signature="e#0#47#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/dto/account.dto.ts">
+        <entry file="file://$PROJECT_DIR$/src/stores/reducers/transaction.reducer.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="40">
-              <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+            <state relative-caret-position="100">
+              <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+              <folding>
+                <element signature="e#0#59#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -91,27 +74,31 @@
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/src/components/TransactionTable.ts" />
         <option value="$PROJECT_DIR$/src/constants/QueueEvents.ts" />
-        <option value="$PROJECT_DIR$/src/index.tsx" />
         <option value="$PROJECT_DIR$/src/App.tsx" />
         <option value="$PROJECT_DIR$/src/constants/WsConstants.ts" />
         <option value="$PROJECT_DIR$/src/components/TransactionTable.tsx" />
         <option value="$PROJECT_DIR$/src/App.js" />
-        <option value="$PROJECT_DIR$/src/stores/actions/transaction.action.ts" />
-        <option value="$PROJECT_DIR$/src/stores/reducers/transaction.reducer.ts" />
-        <option value="$PROJECT_DIR$/src/stores/reducers/index.reducer.ts" />
         <option value="$PROJECT_DIR$/src/services/apis/api.service.ts" />
         <option value="$PROJECT_DIR$/src/services/apis/transaction.api.ts" />
         <option value="$PROJECT_DIR$/src/dto/dormantAccount.dto.ts" />
         <option value="$PROJECT_DIR$/src/dto/transaction.dto.ts" />
         <option value="$PROJECT_DIR$/src/dto/dormant-account.dto.ts" />
         <option value="$PROJECT_DIR$/src/dto/account.dto.ts" />
+        <option value="$PROJECT_DIR$/src/stores/states/transaction.state.ts" />
+        <option value="$PROJECT_DIR$/src/stores/states/index.state.ts" />
+        <option value="$PROJECT_DIR$/src/stores/reducers/index.reducer.ts" />
+        <option value="$PROJECT_DIR$/src/index.tsx" />
+        <option value="$PROJECT_DIR$/src/index.js" />
+        <option value="$PROJECT_DIR$/src/stores/actions/index.action.ts" />
+        <option value="$PROJECT_DIR$/src/stores/actions/transaction.action.ts" />
+        <option value="$PROJECT_DIR$/src/stores/reducers/transaction.reducer.ts" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="27" />
-    <option name="width" value="1440" />
-    <option name="height" value="810" />
+    <option name="y" value="29" />
+    <option name="width" value="1920" />
+    <option name="height" value="1051" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -135,13 +122,14 @@
               <item name="hawk-ai-app" type="b2602c69:ProjectViewProjectNode" />
               <item name="hawk-ai-app" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="dto" type="462c0819:PsiDirectoryNode" />
+              <item name="stores" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="hawk-ai-app" type="b2602c69:ProjectViewProjectNode" />
               <item name="hawk-ai-app" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="stores" type="462c0819:PsiDirectoryNode" />
+              <item name="actions" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="hawk-ai-app" type="b2602c69:ProjectViewProjectNode" />
@@ -149,6 +137,13 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="stores" type="462c0819:PsiDirectoryNode" />
               <item name="reducers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hawk-ai-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hawk-ai-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="stores" type="462c0819:PsiDirectoryNode" />
+              <item name="states" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -160,7 +155,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.linters.configure.manually.selectedeslint" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../archives/iot/iot/frontend" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../aka-doc/akadoc_v3" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="$USER_HOME$/.nvm/versions/node/v12.14.0/bin/node" />
@@ -198,12 +193,12 @@
       <workItem from="1601391367071" duration="1382000" />
       <workItem from="1601432669325" duration="1210000" />
       <workItem from="1601534591859" duration="1230000" />
-      <workItem from="1601535844885" duration="6578000" />
+      <workItem from="1601535844885" duration="8300000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17606000" />
+    <option name="totallyTimeSpent" value="19328000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="29" width="1920" height="1051" extended-state="6" />
@@ -286,13 +281,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="1" column="33" lean-forward="true" selection-start-line="1" selection-start-column="33" selection-end-line="1" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/constants/WsConstants.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
@@ -317,19 +305,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/stores/actions/transaction.action.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/stores/reducers/transaction.reducer.ts">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/stores/reducers/index.reducer.ts">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="363">
@@ -353,10 +328,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dto/transaction.dto.ts">
+    <entry file="file://$PROJECT_DIR$/src/dto/account.dto.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="21" lean-forward="true" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
+        <state relative-caret-position="40">
+          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -370,10 +345,75 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dto/account.dto.ts">
+    <entry file="file://$PROJECT_DIR$/src/dto/transaction.dto.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="21" lean-forward="true" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/redux-saga/index.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="56" selection-start-line="7" selection-start-column="56" selection-end-line="7" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/stores/actions/index.action.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="37" selection-start-column="19" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/stores/states/transaction.state.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="e#0#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/stores/states/index.state.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/stores/reducers/index.reducer.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/stores/actions/transaction.action.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/stores/reducers/transaction.reducer.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#59#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
