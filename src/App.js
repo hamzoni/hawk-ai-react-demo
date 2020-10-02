@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useMemo} from 'react';
+import React, {useEffect, useState} from 'react';
 import SockJsClient from 'react-stomp';
 import './App.css';
 
@@ -16,14 +16,14 @@ import {listTransactions} from "./stores/actions/transaction.action";
 const SOCKET_URL = `http://localhost:9000/${WebSocketRoot}/`;
 
 const App = (props) => {
-    const [value, setValue] = useState(QueueEvents.PUT_TRANSACTION);
+    const [tabValue, setTabValue] = useState(QueueEvents.PUT_TRANSACTION);
 
     let onMessageReceived = (msg, name) => {
         console.log(name, msg);
     };
 
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
+    const handleChangeTab = (event, newValue) => {
+        setTabValue(newValue);
     };
 
     useEffect(() => {
@@ -43,15 +43,15 @@ const App = (props) => {
             <Container maxWidth="lg" component={'div'}>
                 <Paper square>
                     <Tabs
-                        component={'div'} value={value} variant="fullWidth"
+                        component={'div'} value={tabValue} variant="fullWidth"
                         indicatorColor="primary" textColor="primary"
-                        onChange={handleChange}
+                        onChange={handleChangeTab}
                     >
                         <Tab label="Transactions" href={''} value={QueueEvents.PUT_TRANSACTION}/>
                         <Tab label="Dormant activations" href={''} value={QueueEvents.ACTIVATE_DORMANT}/>
                     </Tabs>
                 </Paper>
-                <TransactionTable/>
+                <TransactionTable entityType={tabValue}/>
             </Container>
         </div>
     )

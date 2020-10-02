@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -18,11 +18,9 @@ const useStyles = makeStyles({
     },
 });
 
-const convertType = (label: string, fn: any = null) => {
+const convertType = (label, fn = null) => {
     if (!fn) {
-        fn = (value: any) => {
-            return value;
-        }
+        fn = value => value
     }
     return {label, fn}
 };
@@ -33,18 +31,43 @@ const mappingTypes = {
         "amount": convertType("Amount"),
         "bankProcessingTimestamp": convertType("Processed Time"),
         "currency": convertType("Currency"),
-        "receivingAccount": convertType("Receive Acc", (value: any) => !value ? '' : value.holder),
-        "sendingAccount": convertType("Send Acc", (value: any) => !value ? '' : value.holder),
+        "receivingAccount": convertType("Receive Acc", (value) => !value ? '' : value.holder),
+        "sendingAccount": convertType("Send Acc", (value) => !value ? '' : value.holder),
         "usage": convertType("Usage"),
-    } as any
+    },
+    [QueueEvents.ACTIVATE_DORMANT]: {
+        "bankTransactionId": convertType("ID"),
+    },
 };
 
-const TransactionTable = (props: any) => {
+
+const mapStateToProps = (state) => {
+    let transactions = state.transaction.transactions;
+    transactions = transactions ? cloneDeep(transactions) : null;
+
+    let dormantAccounts = state.transaction.dormantAccounts;
+    dormantAccounts = dormantAccounts ? cloneDeep(dormantAccounts) : null;
+
+    return {
+        transactions, dormantAccounts
+    };
+};
+
+const mapDispatchToProps = {};
+
+const TransactionTable = (props) => {
+
+    const [items, setItems] = useState([]);
+
     const classes = useStyles();
 
     useEffect(() => {
-        console.log(props.transactions);
-    }, [props.transactions]);
+        if (props.entityType === QueueEvents.PUT_TRANSACTION) {
+            setItems(props.transactions.list);
+        } else if (props.entityType === QueueEvents.ACTIVATE_DORMANT) {
+            setItems(props.dormantAccounts.list);
+        }
+    }, [props.entityType, props.transactions, props.dormantAccounts]);
 
     return (
         <TableContainer component={Paper}>
@@ -52,22 +75,21 @@ const TransactionTable = (props: any) => {
                 <TableHead component={'thead'}>
                     <TableRow>
                         {
-                            Object.keys(mappingTypes[QueueEvents.PUT_TRANSACTION])
-                                .map((key: string) =>
-                                    <TableCell align="right">
-                                        {mappingTypes[QueueEvents.PUT_TRANSACTION][key].label}
-                                    </TableCell>
-                                )
+                            Object.keys(mappingTypes[props.entityType]).map((key) =>
+                                <TableCell align="right">
+                                    {mappingTypes[props.entityType][key].label}
+                                </TableCell>
+                            )
                         }
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {props.transactions && props.transactions.list.map((record: any, i: number) => (
+                    {items.map((record, i) => (
                         <TableRow key={record.bankTransactionId + i} component={'tr'}>
                             {
-                                Object.keys(mappingTypes[QueueEvents.PUT_TRANSACTION]).map((key: string, j: number) => (
+                                Object.keys(mappingTypes[props.entityType]).map((key, j) => (
                                     <TableCell align="right" component={'td'} key={key + i + '_' + j}>
-                                        {mappingTypes[QueueEvents.PUT_TRANSACTION][key].fn(record[key])}
+                                        {mappingTypes[props.entityType] ? mappingTypes[props.entityType][key].fn(record[key]) : ''}
                                     </TableCell>
                                 ))
                             }
@@ -78,17 +100,6 @@ const TransactionTable = (props: any) => {
         </TableContainer>
     );
 };
-
-
-const mapStateToProps = (state: any) => {
-    let transactions = state.transaction.transactions;
-    transactions = transactions ? cloneDeep(transactions) : null;
-    return {
-        transactions,
-    };
-};
-
-const mapDispatchToProps = {};
 
 export default connect(
     mapStateToProps,
