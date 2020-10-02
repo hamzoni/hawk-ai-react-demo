@@ -6,7 +6,8 @@ import * as serviceWorker from './serviceWorker';
 import createSagaMiddleware from 'redux-saga';
 import {Provider} from 'react-redux';
 import allReducers from "./stores/reducers/index.reducer";
-import { createStore, applyMiddleware } from 'redux';
+import {createStore, applyMiddleware} from 'redux';
+import rootSaga from "./stores/workers/index.saga";
 
 // redux saga
 
@@ -16,7 +17,7 @@ const store = createStore(
     applyMiddleware(sagaMiddleware)
 );
 
-// sagaMiddleware.run(rootSaga);
+sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
     <React.StrictMode>

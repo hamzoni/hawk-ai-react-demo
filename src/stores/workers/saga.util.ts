@@ -1,8 +1,8 @@
-import {all, call, fork, put, select, takeEvery} from 'redux-saga/effects';
+import {all, fork, takeEvery} from 'redux-saga/effects';
 
 export interface ActionSaga {
-    type: string;
-    callback: Function;
+    type: any;
+    callback: any;
 }
 
 export const createSagas = (actions: ActionSaga[]) => {

@@ -1,5 +1,5 @@
 import axios, {AxiosInstance} from 'axios';
-import * as $ from '@types/jquery';
+import * as $ from 'jquery';
 
 const API_HOST = 'http://localhost:9000';
 

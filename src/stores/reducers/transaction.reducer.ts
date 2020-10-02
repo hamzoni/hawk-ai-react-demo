@@ -1,7 +1,8 @@
 import {TransactionState} from "../states/index.state";
 import {TransactionActionsTypes} from "../actions/index.action";
+import {ReducerType} from "./reducer.util";
 
-const TransactionReducer = (state = new TransactionState(), action) => {
+const TransactionReducer = (state = new TransactionState(), action: ReducerType) => {
     switch (action.type) {
 
         // API actions
