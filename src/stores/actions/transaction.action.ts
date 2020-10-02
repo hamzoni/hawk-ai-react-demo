@@ -7,3 +7,10 @@ export const listTransactions = (paging: Paging) => {
         payload: paging,
     }
 };
+
+export const listDormantAccounts = (paging: Paging) => {
+    return {
+        type: TransactionActionsTypes.LIST_DORMANT_ACCOUNTS,
+        payload: paging,
+    }
+};

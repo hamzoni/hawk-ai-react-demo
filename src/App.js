@@ -10,7 +10,7 @@ import {QueueEvents} from "./constants/QueueEvents";
 import {WebSocketRoot} from "./constants/WsConstants";
 import TransactionTable from "./components/TransactionTable";
 import {connect} from 'react-redux';
-import {listTransactions} from "./stores/actions/transaction.action";
+import {listDormantAccounts, listTransactions} from "./stores/actions/transaction.action";
 
 
 const SOCKET_URL = `http://localhost:9000/${WebSocketRoot}/`;
@@ -28,6 +28,9 @@ const App = (props) => {
 
     useEffect(() => {
         props.listTransactions({
+            page: 0, size: 5,
+        });
+        props.listDormantAccounts({
             page: 0, size: 5,
         });
     }, []);
@@ -63,6 +66,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
     listTransactions,
+    listDormantAccounts,
 };
 
 // noinspection JSCheckFunctionSignatures

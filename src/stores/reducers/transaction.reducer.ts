@@ -23,6 +23,23 @@ const TransactionReducer = (state = new TransactionState(), action: ReducerType)
             }, state);
         }
 
+        case TransactionActionsTypes.LIST_DORMANT_ACCOUNTS: {
+            return {
+                ...state,
+            };
+        }
+
+        case TransactionActionsTypes.LIST_DORMANT_ACCOUNTS_SUCCESS: {
+            const results = action.value.data.content;
+
+            const dormantAccounts = state.dormantAccounts;
+            dormantAccounts.list = results;
+
+            return Object.assign({
+                dormantAccounts
+            }, state);
+        }
+
         // WebSocket actions
         case TransactionActionsTypes.WS_STORE_TRANSACTION: {
             return {
