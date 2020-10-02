@@ -13,9 +13,14 @@ const TransactionReducer = (state = new TransactionState(), action: ReducerType)
         }
 
         case TransactionActionsTypes.LIST_TRANSACTIONS_SUCCESS: {
-            return {
-                ...state,
-            };
+            const results = action.value.data.content;
+
+            const transactions = state.transactions;
+            transactions.list = results;
+
+            return Object.assign({
+                transactions
+            }, state);
         }
 
         // WebSocket actions

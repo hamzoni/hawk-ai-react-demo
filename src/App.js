@@ -37,6 +37,7 @@ const App = (props) => {
             {Object.values(QueueEvents).map(name => <SockJsClient
                 url={SOCKET_URL} topics={[`/${WebSocketRoot}/${name}`]}
                 onMessage={msg => onMessageReceived(msg, name)}
+                key={name}
             />)}
 
             <Container maxWidth="lg" component={'div'}>
@@ -50,7 +51,6 @@ const App = (props) => {
                         <Tab label="Dormant activations" href={''} value={QueueEvents.ACTIVATE_DORMANT}/>
                     </Tabs>
                 </Paper>
-
                 <TransactionTable/>
             </Container>
         </div>

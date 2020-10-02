@@ -5,10 +5,8 @@ import {createSagas} from "./saga.util";
 
 
 function* listTransactions(action: any) {
-    console.log(action);
-    // const value = yield call(ApiService.transaction.get, '', action.payload);
-    // console.log(value);
-    // yield put({type: TransactionActionsTypes.LIST_TRANSACTIONS, value});
+    const value = yield call(ApiService.transaction.get, '', action.payload);
+    yield put({type: TransactionActionsTypes.LIST_TRANSACTIONS_SUCCESS, value});
 }
 
 function* watchListTransactions() {

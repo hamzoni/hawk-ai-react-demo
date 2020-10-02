@@ -1,4 +1,4 @@
 export interface ReducerType {
     type: string;
-    payload: any;
+    value: any;
 }

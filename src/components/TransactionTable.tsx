@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -8,6 +8,9 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import {connect} from 'react-redux';
+import {QueueEvents} from "../constants/QueueEvents";
+
+import {cloneDeep} from 'lodash'
 
 const useStyles = makeStyles({
     table: {
@@ -15,43 +18,59 @@ const useStyles = makeStyles({
     },
 });
 
-function createData(name: any, calories: any, fat: any, carbs: any, protein: any) {
-    return {name, calories, fat, carbs, protein};
-}
+const convertType = (label: string, fn: any = null) => {
+    if (!fn) {
+        fn = (value: any) => {
+            return value;
+        }
+    }
+    return {label, fn}
+};
 
-const rows = [
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
+const mappingTypes = {
+    [QueueEvents.PUT_TRANSACTION]: {
+        "bankTransactionId": convertType("ID"),
+        "amount": convertType("Amount"),
+        "bankProcessingTimestamp": convertType("Processed Time"),
+        "currency": convertType("Currency"),
+        "receivingAccount": convertType("Receive Acc", (value: any) => !value ? '' : value.holder),
+        "sendingAccount": convertType("Send Acc", (value: any) => !value ? '' : value.holder),
+        "usage": convertType("Usage"),
+    } as any
+};
 
-const TransactionTable = () => {
+const TransactionTable = (props: any) => {
     const classes = useStyles();
+
+    useEffect(() => {
+        console.log(props.transactions);
+    }, [props.transactions]);
 
     return (
         <TableContainer component={Paper}>
             <Table className={classes.table} aria-label="simple table" component={'table'}>
                 <TableHead component={'thead'}>
                     <TableRow>
-                        <TableCell>Dessert (100g serving)</TableCell>
-                        <TableCell align="right">Calories</TableCell>
-                        <TableCell align="right">Fat&nbsp;(g)</TableCell>
-                        <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-                        <TableCell align="right">Protein&nbsp;(g)</TableCell>
+                        {
+                            Object.keys(mappingTypes[QueueEvents.PUT_TRANSACTION])
+                                .map((key: string) =>
+                                    <TableCell align="right">
+                                        {mappingTypes[QueueEvents.PUT_TRANSACTION][key].label}
+                                    </TableCell>
+                                )
+                        }
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {rows.map((row) => (
-                        <TableRow key={row.name} component={'tr'}>
-                            <TableCell component="th" scope="row">
-                                {row.name}
-                            </TableCell>
-                            <TableCell align="right">{row.calories}</TableCell>
-                            <TableCell align="right">{row.fat}</TableCell>
-                            <TableCell align="right">{row.carbs}</TableCell>
-                            <TableCell align="right">{row.protein}</TableCell>
+                    {props.transactions && props.transactions.list.map((record: any, i: number) => (
+                        <TableRow key={record.bankTransactionId + i} component={'tr'}>
+                            {
+                                Object.keys(mappingTypes[QueueEvents.PUT_TRANSACTION]).map((key: string, j: number) => (
+                                    <TableCell align="right" component={'td'} key={key + i + '_' + j}>
+                                        {mappingTypes[QueueEvents.PUT_TRANSACTION][key].fn(record[key])}
+                                    </TableCell>
+                                ))
+                            }
                         </TableRow>
                     ))}
                 </TableBody>
@@ -62,8 +81,11 @@ const TransactionTable = () => {
 
 
 const mapStateToProps = (state: any) => {
-    // console.log(state);
-    return {};
+    let transactions = state.transaction.transactions;
+    transactions = transactions ? cloneDeep(transactions) : null;
+    return {
+        transactions,
+    };
 };
 
 const mapDispatchToProps = {};
