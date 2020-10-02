@@ -50,6 +50,9 @@ export class BaseApi {
     }
 
     async get(url: string, query: any = null): Promise<any> {
+
+        console.log('query ', query);
+
         const xhr = this.recreateAxios();
         if (query) url += `?${$.param(query)}`;
         return xhr.get(url);

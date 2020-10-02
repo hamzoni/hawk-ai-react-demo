@@ -1,4 +1,4 @@
 export default class AccountDto {
-    accountNumber: string;
-    holder: string;
+    accountNumber!: string;
+    holder!: string;
 }
