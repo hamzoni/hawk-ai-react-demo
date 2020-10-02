@@ -1,19 +1,21 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 import SockJsClient from 'react-stomp';
 import './App.css';
 
 import {Container} from '@material-ui/core';
-import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import {QueueEvents} from "./constants/QueueEvents";
 import {WebSocketRoot} from "./constants/WsConstants";
 import TransactionTable from "./components/TransactionTable";
+import {connect} from 'react-redux';
+import {listTransactions} from "./stores/actions/transaction.action";
+
 
 const SOCKET_URL = `http://localhost:9000/${WebSocketRoot}/`;
 
-const App = () => {
+const App = (props) => {
     const [value, setValue] = useState(QueueEvents.PUT_TRANSACTION);
 
     let onMessageReceived = (msg, name) => {
@@ -23,6 +25,12 @@ const App = () => {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+
+    useEffect(() => {
+        props.listTransactions({
+            page: 0, size: 5,
+        });
+    }, []);
 
     return (
         <div className="App">
@@ -44,13 +52,21 @@ const App = () => {
                 </Paper>
 
                 <TransactionTable/>
-
-                <Button variant="contained" color="primary" href={''}>
-                    Hello World
-                </Button>
             </Container>
         </div>
     )
-}
+};
 
-export default App;
+const mapStateToProps = state => {
+    return {};
+};
+
+const mapDispatchToProps = {
+    listTransactions,
+};
+
+// noinspection JSCheckFunctionSignatures
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(App);

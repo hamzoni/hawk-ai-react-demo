@@ -7,6 +7,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import {connect} from 'react-redux';
 
 const useStyles = makeStyles({
     table: {
@@ -59,4 +60,16 @@ const TransactionTable = () => {
     );
 };
 
-export default TransactionTable;
+
+const mapStateToProps = (state: any) => {
+    // console.log(state);
+    return {};
+};
+
+const mapDispatchToProps = {};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(TransactionTable);
+

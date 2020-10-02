@@ -7,7 +7,7 @@ import createSagaMiddleware from 'redux-saga';
 import {Provider} from 'react-redux';
 import allReducers from "./stores/reducers/index.reducer";
 import {createStore, applyMiddleware} from 'redux';
-import rootSaga from "./stores/workers/index.saga";
+import rootSaga from "./stores/workers/transaction.saga";
 
 // redux saga
 
